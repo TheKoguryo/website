@@ -11,7 +11,8 @@ variable "ssh_public_key" {}
 variable "region" {}
 
 variable "OS_Image" {
-  default = "Oracle-Linux-7.4-2018.01.20-0"
+  type = "map"
+  default = {us-ashburn-1 = "ocid1.image.oc1.iad.aaaaaaaaxrqeombwty6jyqgk3fraczdd63bv66xgfsqka4ktr7c57awr3p5a"}
 }
 
 provider "oci" {
@@ -27,10 +28,6 @@ data "oci_identity_availability_domains" "ADs" {
   compartment_id = "${var.tenancy_ocid}"
 }
 
-data "oci_core_images" "OS_image_ocid" {
-  compartment_id = "${var.compartment_ocid}"
-  display_name   = "${var.OS_Image}"
-}
 
 /* Network */
 
@@ -78,13 +75,18 @@ resource "oci_core_route_table" "routetable1" {
 /* Instances */
 
 resource "oci_core_instance" "instances" {
-  count               = "2"
+  count               = "1"
   availability_domain = "${lookup(data.oci_identity_availability_domains.ADs.availability_domains[0],"name")}"
   compartment_id      = "${var.compartment_ocid}"
   display_name        = "tf-server-${count.index}"
-  image               = "${lookup(data.oci_core_images.OS_image_ocid.images[0], "id")}"
   shape               = "VM.Standard1.2"
   subnet_id           = "${oci_core_subnet.subnet1.id}"
+  
+  source_details {
+  	source_type = "image"
+	source_id = "${var.OS_Image[var.region]}"
+	boot_volume_size_in_gbs = "60"
+}
 
   metadata {
     ssh_authorized_keys = "${var.ssh_public_key}"
