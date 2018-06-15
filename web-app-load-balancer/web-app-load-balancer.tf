@@ -173,11 +173,13 @@ resource "oci_core_instance" "instance1" {
   availability_domain = "${lookup(data.oci_identity_availability_domains.ADs.availability_domains[0],"name")}"
   compartment_id      = "${var.compartment_ocid}"
   display_name        = "be-instance1"
-  image               = "${var.InstanceImageOCID[var.region]}"
   shape               = "VM.Standard1.2"
   subnet_id           = "${oci_core_subnet.subnet1.id}"
   hostname_label      = "be-instance1"
-
+  source_details {
+    source_type = "image"
+    source_id = "${var.InstanceImageOCID[var.region]}"
+}
   metadata {
     ssh_authorized_keys = "${var.ssh_public_key}"
     user_data           = "${base64encode(var.user-data)}"
@@ -189,11 +191,13 @@ resource "oci_core_instance" "instance2" {
   availability_domain = "${lookup(data.oci_identity_availability_domains.ADs.availability_domains[1],"name")}"
   compartment_id      = "${var.compartment_ocid}"
   display_name        = "be-instance2"
-  image               = "${var.InstanceImageOCID[var.region]}"
   shape               = "VM.Standard1.2"
   subnet_id           = "${oci_core_subnet.subnet2.id}"
   hostname_label      = "be-instance2"
-
+  source_details {
+    source_type = "image"
+    source_id = "${var.InstanceImageOCID[var.region]}"
+}
   metadata {
     ssh_authorized_keys = "${var.ssh_public_key}"
     user_data           = "${base64encode(var.user-data)}"
