@@ -7,7 +7,7 @@ export TF_VAR_private_key_path="<path-to-oci_api_key.pem>"
 export TF_VAR_region="us-ashburn-1"
 
 ### Public/private keys used on the instance
-export TF_VAR_ssh_public_key=$(cat <path-to-public-ssh-key)
-export TF_VAR_ssh_private_key=$(cat <path-to-private-ssh-key)
+export TF_VAR_ssh_public_key=$(cat path-to-public-ssh-key)
+export TF_VAR_ssh_private_key=$(cat path-to-private-ssh-key)
 
 
