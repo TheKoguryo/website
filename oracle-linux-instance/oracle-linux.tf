@@ -6,7 +6,6 @@ variable "tenancy_ocid" {}
 variable "user_ocid" {}
 variable "fingerprint" {}
 variable "private_key_path" {}
-variable "private_key_password" {}
 variable "compartment_ocid" {}
 variable "ssh_public_key" {}
 variable "region" {}
@@ -84,7 +83,7 @@ resource "oci_core_instance" "instances" {
   compartment_id      = "${var.compartment_ocid}"
   display_name        = "tf-server-${count.index}"
   image               = "${lookup(data.oci_core_images.OS_image_ocid.images[0], "id")}"
-  shape               = "VM.Standard1.1"
+  shape               = "VM.Standard1.2"
   subnet_id           = "${oci_core_subnet.subnet1.id}"
 
   metadata {
