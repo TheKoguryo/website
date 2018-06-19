@@ -5,6 +5,7 @@ export TF_VAR_compartment_ocid="<compartment-ocid>"
 export TF_VAR_fingerprint="<fingerprint>"
 export TF_VAR_private_key_path="<path-to-oci_api_key.pem>"
 export TF_VAR_region="us-ashburn-1"
+export TF_VAR_private_key_password="<enter_pass_phrase>"
 
 ### Public/private keys used on the instance
 export TF_VAR_ssh_public_key=$(cat path-to-public-ssh-key)
