@@ -1,2 +1,2 @@
-source: '/oracle-linux-instance'
+source: ./oracle-linux-instance
 theme: jekyll-theme-cayman
