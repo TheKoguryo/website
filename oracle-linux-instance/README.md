@@ -1,9 +1,3 @@
----
-layout: ziplab
-description: List of all the ziplabs
-tags: ziplab, oracle cloud
-permalink: /ziplabs/index.html
----
 
 
 
