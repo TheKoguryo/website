@@ -1,3 +1,12 @@
+---
+layout: ziplab
+description: List of all the ziplabs
+tags: ziplab, oracle cloud
+permalink: /ziplabs/index.html
+---
+
+
+
 # Terraform Examples for OCI
 
 1. This is just a test for compute
