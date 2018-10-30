@@ -1,3 +1,9 @@
+---
+layout: ziplab
+description: List of all the ziplabs
+tags: ziplab, oracle cloud
+permalink: /ziplabs/index.html
+---
 # Zip Labs Index #
 
 ## Oracle Open World 2018 ##
