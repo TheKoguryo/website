@@ -1,1 +1,0 @@
-# Terraform Examples for OCI
